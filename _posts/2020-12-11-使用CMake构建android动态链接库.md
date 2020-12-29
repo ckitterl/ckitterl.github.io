@@ -96,6 +96,7 @@ ${ANDROID_SDK_HOME}/cmake/3.6.3155560/bin/cmake \
 -DCMAKE_TOOLCHAIN_FILE=${ANDROID_SDK_HOME}/ndk/21.3.6528147/build/cmake/android.toolchain.cmake \
 -DANDROID_NATIVE_API_LEVEL=23 \
 -DANDROID_TOOLCHAIN=clang
+
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/mk/security/test/cmakeTest/arm64-v8a
