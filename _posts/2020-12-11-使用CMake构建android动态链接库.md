@@ -110,3 +110,22 @@ ninja: Entering directory `./arm64-v8a/'
 ```
 
 最终我们就得到了libnative-lib.so
+
+## 使用自定义高版本cmake
+由于Android Sdk里自带的cmake版本太低，有些API或者子模块可能会不存在，所以，我们有时候会使用自定义的cmake版本。
+测试发现新版本的`cmake`（3.19.2）也是支持`${ANDROID_SDK_HOME}/cmake/3.10.2.4988404/bin/ninja`(1.8)的，所以我们可以仅替换掉cmake的路径，以及-G参数（新版本cmake没有 `Android Gradle - Ninja`这个generator里，统一使用`Ninja`）
+
+修改后的命令行变成
+```bash
+${where-you-install-cmake}/cmake \
+-H. \
+-B./arm64-v8a \
+-G"Ninja" \
+-DANDROID_ABI=arm64-v8a \
+-DANDROID_NDK=${ANDROID_SDK_HOME}/ndk/21.3.6528147 \
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=./release/obj/arm64-v8a \
+-DCMAKE_MAKE_PROGRAM=${ANDROID_SDK_HOME}/cmake/3.10.2.4988404/bin/ninja \
+-DCMAKE_TOOLCHAIN_FILE=${ANDROID_SDK_HOME}/ndk/21.3.6528147/build/cmake/android.toolchain.cmake \
+-DANDROID_NATIVE_API_LEVEL=23 \
+-DANDROID_TOOLCHAIN=clang
+```
