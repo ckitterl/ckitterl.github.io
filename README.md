@@ -1,67 +1,80 @@
-# Minimalist
+# [Garth](https://garth.darn.es/)
+[![Gem Version](https://badge.fury.io/rb/garth-jekyll-theme.svg)](https://badge.fury.io/rb/garth-jekyll-theme)
 
-[![Build Status](https://travis-ci.org/Trybnetic/minimalist.svg?branch=master)](https://travis-ci.org/Trybnetic/minimalist)
-[![License](https://img.shields.io/github/license/Trybnetic/minimalist.svg)](https://github.com/Trybnetic/minimalist/blob/master/LICENSE.txt)  
+🥁 A really basic theme for Jekyll, using the official Jekyll theme implementation.
 
-Minimalist is a simple and light weighted [jekyll](http://jekyllrb.com/) theme. It focuses on a minimalistic design but still providing all functionality for a personal blog.
+[<img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" width="217"/>](https://buymeacoffee.com/daviddarnes#support)
+
+![Screenshot](https://raw.githubusercontent.com/daviddarnes/garth/master/screenshot.png)
+
+## Contents
+- [Installation](#installation)
+- [Customising](#customising)
+- [Site settings](#site-settings)
+- [Page layouts](#page-layouts)
+- [Credits](#credits)
 
 ## Installation
-To install Open Recipes you have to install [jekyll](https://jekyllrb.com). After successfully installing jekyll you have to clone this repository to your computer:
-```
-git clone https://github.com/Trybnetic/minimalist.git
-```
-Then switch into the directory and start jekyll:
-```
-cd minimalist
-bundle exec jekyll serve
-```
-The last command starts a webserver on your local machine. Now you should have a copy of the site running at `http://127.0.0.1:4000/`. Open this url with your webbrowser and explore the site.  
-By changing some of the files (except of the `config.yml`) the changes will be displayed immediately.
 
-## Usage
-After you successfully installed the theme on your computer you can add additional blog posts by creating new files in the `_posts` directory. The new files have to follow the name convention `year-month-day-title.md`.
+### Quick setup
 
+To give you a running start I've put together some starter kits that you can download, fork or even deploy immediately:
 
-## Post structure
-**Example:**
-```
----
-layout: post
-title:  "Lorem ipsum"
-date:   2017-09-06 01:03:29 +0200
-categories: lorem ipsum
----
+- Vanilla Jekyll starter kit:  
+  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/daviddarnes/garth-kit)
+- Stackbit starter kit:  
+  [![Create with Stackbit](https://assets.stackbit.com/badge/create-with-stackbit.svg)](https://app.stackbit.com/create?theme=https://github.com/daviddarnes/garth-stackbit-kit)
+- GitHub Pages with remote theme kit - **[Download kit](https://github.com/daviddarnes/garth-kit/archive/remote-theme.zip)**
 
-Eius ut fugiat omnis. Autem nihil dignissimos deserunt eum. In adipisci ipsum
-natus saepe facere. Aspernatur velit autem sed. Rerum provident non incidunt id
-expedita aliquam non. Eum sit saepe autem nam aut voluptatem non et.
+### As a Jekyll theme
 
-<!--more-->
+1. Add `gem "garth-jekyll-theme"` to your `Gemfile` to add the theme as a dependancy
+2. Run the command `bundle install` in the root of project to install the theme and its dependancies
+3. Add `theme: garth-jekyll-theme` to your `_config.yml` file to set the site theme
+4. Run `bundle exec jekyll serve` to build and serve your site
+5. Done! Use the example [`_config.yml`](https://github.com/daviddarnes/garth/blob/master/_config.yml) file to set site-wide options
 
-Sequi et ut consequatur et incidunt expedita provident. Iste ipsa eaque qui.
-Totam vitae quasi nulla aut aliquam harum. Quibusdam et deserunt possimus
-dolores voluptate facilis corrupti vero.
+### As a GitHub Pages remote theme
 
-```
+1. Add `gem "jekyll-remote-theme"` to your `Gemfile` to add the theme as a dependancy
+2. Run the command `bundle install` in the root of project to install the jekyll remote theme gem as a dependancy
+3. Add `jekyll-remote-theme` to the list of `plugins` in your `_config.yml` file
+4. Add `remote_theme: daviddarnes/garth` to your `_config.yml` file to set the site theme
+5. Run `bundle exec jekyll serve` to build and serve your site
+6. Done! Use the example [`_config.yml`](https://github.com/daviddarnes/garth/blob/master/_config.yml) file to set site-wide options
 
-Each post consits of a header and a body. In the header defined by the `---`, you have to make basic definitions concerning the blog post.   
-In the first line of the example the layout is specified. This should be `layout: post` for all blog post except you want to add a custom layout for a certain media type. In the second line the title of the blog post is specified. In the third line you have to add the date of publication which will be displayed on top of the blog post on the website. In the fourth and last line of the header you can add categories so your blog posts gets displayed at the categories site `/categories/<category>/`. The existing categories can be found in the `categories/` folder.  
-Finally, you can add `<!--more-->` in your text to indicate that the text till this delimiter should be used as a preview at the homepage.
+### As a Boilerplate / Fork
 
-## Categories
-This theme supports using categories. If you want to add custom categories you need to add a `<your category name>.md` file to the `categories/` folder, where `<your category name>` denotes the name of the category you want to add.  
-Your `<your category name>.md` needs to contain the following lines:
-```
----
-layout: category
-category: <your category name>
-permalink: /categories/<your category name>/
----
-```
-The first line specifies that the layout of the rendered site is category. In the second line you have to specify the name of the category you want to add. And finally, you have to specify the link scheme to your category site.
+_(deprecated, not recommended)_
 
-## Host your own blog
-The simplest way to host your own blog with the [Minimalist](https://trybnetic.github.io/minimalist/) theme is to fork [the repository](https://github.com/Trybnetic/minimalist/) and use the [gh-pages](https://pages.github.com/) functionality provided by [GitHub](https://github.com/).
+1. [Fork the repo](https://github.com/daviddarnes/garth#fork-destination-box)
+2. Replace the `Gemfile` with one stating all the gems used in your project
+3. Delete the following unnecessary files/folders: `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `LICENSE`, `screenshot.png`, `CNAME` and `garth-jekyll-theme.gemspec`
+4. Run the command `bundle install` in the root of project to install the jekyll remote theme gem as a dependancy
+5. Run `bundle exec jekyll serve` to build and serve your site
+6. Done! Use the example [`_config.yml`](https://github.com/daviddarnes/garth/blob/master/_config.yml) file to set site-wide options
 
-## License
-This jekyll theme is [licensed under the MIT license](https://github.com/Trybnetic/minimalist/blob/master/LICENSE.txt). Check the license on whether and how you are allowed to use, modify and distribute this theme.
+## Customising
+
+When using Garth as a theme means you can take advantage of the file overriding method. This allows you to overwrite any file in this theme with your own custom file, by matching the file name and path. The most common example of this would be if you want to add your own styles or change the core style settings.
+
+To add your own styles copy the [`styles.scss`](https://github.com/daviddarnes/garth/blob/master/assets/styles.scss) into your own project with the same file path (`assets/styles.scss`). From there you can add your own styles, you can even optionally ignore the theme styles by removing the `@import "garth";` line.
+
+If you're looking to set your own colours copy the [`_colors.scss`](https://github.com/daviddarnes/garth/blob/master/_sass/_colors.scss) and main theme styles file [`garth.scss`](https://github.com/daviddarnes/garth/blob/master/_sass/garth.scss) into your project at the same file path (`_sass/`) and change variables however you wish. The settings are a mixture of custom variables and settings from [Sassline](https://medium.com/@jakegiltsoff/sassline-v2-0-e424b2881e7e) - follow the link to find out how to configure the typographic settings.
+
+## Site settings
+
+You'll need to change the `description`, `title` and `url` to match with the project.
+
+## Page layouts
+
+There are 3 layouts; `page`, `post` and `home` (home acts as the font page blog).
+
+> **Note:** The Post List Page options are actually in the collection data within the `_config.yml` file, this is so they can be edited with CMSs such as [Siteleaf](https://siteleaf.com)
+
+## Credits
+
+- Thanks to [Sassline](https://sassline.com/) for the typographic basis, by [Jake Giltsoff](https://twitter.com/jakegiltsoff)
+- Thanks to [Flexbox mixin](https://github.com/mastastealth/sass-flex-mixin) by [Brian Franco](https://twitter.com/brianfranco)
+- Thanks to [Normalize](https://necolas.github.io/normalize.css/) by [Nicolas Gallagher](https://twitter.com/necolas) and [Jonathan Neal](https://twitter.com/jon_neal).
+- Thanks to [pygments-css](http://richleland.github.io/pygments-css/) for the autumn syntax highlighting, by [Rich Leland](https://twitter.com/richleland)
