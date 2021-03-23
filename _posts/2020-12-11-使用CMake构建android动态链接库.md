@@ -3,9 +3,11 @@ layout: post
 title:  "使用CMake构建android动态连接口"
 categories: android
 ---
-# 使用CMake构建android动态链接库
-## CMake简介
+
 CMake是个一个开源的跨平台自动化建构系统。CMake并不直接建构出最终的软件，而是产生标准的建构工程文件（如Unix的Makefile或Windows Visual C++的projects/workspaces），然后再依一般的建构方式使用。在这里，CMake生成的是Ninja的构建工程（Ninja是一个专注于速度的小型构建系统[1]，由Evan Martin于2010年在Chrome团队工作时开发），然后再用Ninja来生成动态链接库
+<!--more-->
+
+基于构建效率和代码结构考虑，我们后续的jni项目建议使用cmake进行c++项目的构建
 
 ### 一个简单的例子
 CMake的配置文件取名为CMakeLists.txt。
