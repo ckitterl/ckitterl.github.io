@@ -330,6 +330,8 @@ publishing {
 ```
 这里时候就可以使用`gradle publish`命令进行发布了
 
+> TIP: 构建的插件的时候使用的JDK版本需要和使用插件时候环境的JDK版本需要保持一致，否者会报错；Android Studio一般用的自带的JDK是1.8，而我们一般开发用的IDEA用的自定义版本是11(文章编写的时候)，需要将IDEA的JDK版本降到1.8（建议），或者Android Studio升到11。
+
 
 
 
