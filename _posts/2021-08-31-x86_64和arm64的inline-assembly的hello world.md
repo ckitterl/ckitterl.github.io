@@ -1,21 +1,21 @@
 ---
 layout: post
-title:  "x86_64ºÍarm64µÄinline-assemblyµÄhello world"
+title:  "x86_64å’Œarm64çš„inline-assemblyçš„hello world"
 categories: assembly
 ---
 
-ÕâÕâÆªÎÄÕÂÀïÌá¹©ÁËÁ½ÖÖABIÏÂµÄhello worldÈçºÎÔÚinline assemblyÏÂÊµÏÖ¡£´ÓÕâÐ©´úÂëÀïÎÒÃÇ¿ÉÒÔÑ§µ½¼¸¸ö¼¼Êõµã
+è¿™è¿™ç¯‡æ–‡ç« é‡Œæä¾›äº†ä¸¤ç§ABIä¸‹çš„hello worldå¦‚ä½•åœ¨inline assemblyä¸‹å®žçŽ°ã€‚ä»Žè¿™äº›ä»£ç é‡Œæˆ‘ä»¬å¯ä»¥å­¦åˆ°å‡ ä¸ªæŠ€æœ¯ç‚¹
 
-- inline assemblyµÄ¸ñÊ½
-- ²»Í¬ABIµÄ¼Ä´æÆ÷Ê¹ÓÃ(ÓÈÆäÊÇarm64)
-- ²»Í¬ABIµÄÏµÍ³µ÷ÓÃ
+- inline assemblyçš„æ ¼å¼
+- ä¸åŒABIçš„å¯„å­˜å™¨ä½¿ç”¨(å°¤å…¶æ˜¯arm64)
+- ä¸åŒABIçš„ç³»ç»Ÿè°ƒç”¨
 
-Õâ¸öÆªµÄ»ù´¡ÉÏ£¬ÎÒÃÇ¿ÉÒÔ×ÔÐÐÀ©Õ¹²âÊÔÆäËûµÄ»ã±àÌØÐÔ¡£±ÈÈç»ã±àºÍCµÄ»¥Ïàµ÷ÓÃ, labelµÄÊ¹ÓÃ
+è¿™ä¸ªç¯‡çš„åŸºç¡€ä¸Šï¼Œæˆ‘ä»¬å¯ä»¥è‡ªè¡Œæ‰©å±•æµ‹è¯•å…¶ä»–çš„æ±‡ç¼–ç‰¹æ€§ã€‚æ¯”å¦‚æ±‡ç¼–å’ŒCçš„äº’ç›¸è°ƒç”¨, labelçš„ä½¿ç”¨
 
 
-## »ù´¡
+## åŸºç¡€
 
-inline assmbleµÄ»ù´¡Óï·¨
+inline assmbleçš„åŸºç¡€è¯­æ³•
 
 ```
 asm asm-qualifiers ( AssemblerTemplate
@@ -31,9 +31,9 @@ asm asm-qualifiers ( AssemblerTemplate
 ```
 
 
-asm ¹Ø¼ü×Ö±íÊ¾ÕâÊÇÒ»¸öinline assembly
+asm å…³é”®å­—è¡¨ç¤ºè¿™æ˜¯ä¸€ä¸ªinline assembly
 
-ÕâÀï²»ÏêÊöÁË£¬[¹Ù·½ÎÄµµ](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#Volatile)Ð´µÄ»¹ÊÇºÜÏêÏ¸µÄ
+è¿™é‡Œä¸è¯¦è¿°äº†ï¼Œ[å®˜æ–¹æ–‡æ¡£](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#Volatile)å†™çš„è¿˜æ˜¯å¾ˆè¯¦ç»†çš„
 
 
 
@@ -69,17 +69,17 @@ void my_exit() {
 int main() {
     my_write(1, "hello world!\n",  13);
     my_exit();
-	// ÕâÀïÃ»ÓÐreturnÒ²ÊÇ¿ÉÒÔµÄ£¬ÒòÎªÔÚmy_exitº¯ÊýÀï¾ÍÒÑ¾­ÍË³ö³ÌÐòÁË; ¿ÉÒÔÓÃecho $?²é¿´×îÖÕµÄexit code£¬
-	// ²»ÊÇmainº¯ÊýµÄretrunÖµ£¬¶øÊÇÉÏÃæmy_exitµÄÍË³ö²ÎÊý100
+	// è¿™é‡Œæ²¡æœ‰returnä¹Ÿæ˜¯å¯ä»¥çš„ï¼Œå› ä¸ºåœ¨my_exitå‡½æ•°é‡Œå°±å·²ç»é€€å‡ºç¨‹åºäº†; å¯ä»¥ç”¨echo $?æŸ¥çœ‹æœ€ç»ˆçš„exit codeï¼Œ
+	// ä¸æ˜¯mainå‡½æ•°çš„retrunå€¼ï¼Œè€Œæ˜¯ä¸Šé¢my_exitçš„é€€å‡ºå‚æ•°100
 	return 0;
 }
 ```
 
 ## arm64
 
-arm64µÄline assembly²»Ö§³ÖÔÚinput/outputÀïÖ¸¶¨ÌØ¶¨µÄ¼Ä´æÆ÷£¬µ«ÊÇÏµÍ³µ÷ÓÃÐèÒª½«[ÌØ¶¨µÄ²ÎÊý·Åµ½ÌØ¶¨¼Ä´æÆ÷ÖÐ](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md)£¬ËùÒÔ¾ÍÐèÒªÓÃregister¹Ø¼ü×Ö½«±äÁ¿ºÍ¼Ä´æÆ÷½øÐÐ[°ó¶¨](https://gcc.gnu.org/onlinedocs/gcc/Local-Register-Variables.html#Local-Reg-Vars)¡£
+arm64çš„line assemblyä¸æ”¯æŒåœ¨input/outputé‡ŒæŒ‡å®šç‰¹å®šçš„å¯„å­˜å™¨ï¼Œä½†æ˜¯ç³»ç»Ÿè°ƒç”¨éœ€è¦å°†[ç‰¹å®šçš„å‚æ•°æ”¾åˆ°ç‰¹å®šå¯„å­˜å™¨ä¸­](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md)ï¼Œæ‰€ä»¥å°±éœ€è¦ç”¨registerå…³é”®å­—å°†å˜é‡å’Œå¯„å­˜å™¨è¿›è¡Œ[ç»‘å®š](https://gcc.gnu.org/onlinedocs/gcc/Local-Register-Variables.html#Local-Reg-Vars)ã€‚
 
-> ¾­¹ý²âÊÔ£¬Í¨ÓÃ¼Ä´æÆ÷¶¼ÊÇ´Ó0¿ªÊ¼ÒÀ´ÎÊ¹ÓÃ£¬ËùÒÔ£¬fd_local, buf, size_localÕâÐ©¶¼²»ÊÇ±ØÐëµÄ£¬ÒòÎª±¾À´ËûÃÇ¾ÍÊÇ·Åµ½x0,x1,x2£¬¸ÕºÃ·ûºÏË³Ðò£¬ÕâÀïÎªÁËÍ³Ò»²¢²»¶Ô¶ÁÕß²úÉúÔÄ¶Á¸ÉÈÅ£¬¶¼ÊÇÖ¸¶¨ÁË¼Ä´æÆ÷¡£
+> ç»è¿‡æµ‹è¯•ï¼Œé€šç”¨å¯„å­˜å™¨éƒ½æ˜¯ä»Ž0å¼€å§‹ä¾æ¬¡ä½¿ç”¨ï¼Œæ‰€ä»¥ï¼Œfd_local, buf, size_localè¿™äº›éƒ½ä¸æ˜¯å¿…é¡»çš„ï¼Œå› ä¸ºæœ¬æ¥ä»–ä»¬å°±æ˜¯æ”¾åˆ°x0,x1,x2ï¼Œåˆšå¥½ç¬¦åˆé¡ºåºï¼Œè¿™é‡Œä¸ºäº†ç»Ÿä¸€å¹¶ä¸å¯¹è¯»è€…äº§ç”Ÿé˜…è¯»å¹²æ‰°ï¼Œéƒ½æ˜¯æŒ‡å®šäº†å¯„å­˜å™¨ã€‚
 
 
 ```c
@@ -94,7 +94,7 @@ int my_write(int fd, const void *buf, size_t size) {
     register size_t size_local asm("x2") = size;
     register long call  asm("r8") = __NR_write;
     asm volatile(
-            "svc #0" // ÏµÍ³µ÷ÓÃ£¬ÓÃarm-developµÄËµ·¨¾ÍÊÇÏÝÈëE1²ã,ºÍx86µÄÔ­Àí²»Ì«Ò»Ñù
+            "svc #0" // ç³»ç»Ÿè°ƒç”¨ï¼Œç”¨arm-developçš„è¯´æ³•å°±æ˜¯é™·å…¥E1å±‚,å’Œx86çš„åŽŸç†ä¸å¤ªä¸€æ ·
             : "=r" (ret)
             : "r"(call), "r"(fd_local), "r"(buf), "r"(size_local)
             : "memory"
@@ -108,19 +108,19 @@ int main() {
 }
 ```
 
-Õâ¶Î´úÂëÒªÓÃarm64(aarch64)µÄtoolchain½øÐÐ±àÒë£»¿ÉÒÔÑ¡ÓÃandroid ndkÌá¹©µÄ»òÕßµ¥¶À°²×°±àÒëÁ´¹¤¾ß¼¯; ÕâÀï²ÉÓÃandroid ndk
+è¿™æ®µä»£ç è¦ç”¨arm64(aarch64)çš„toolchainè¿›è¡Œç¼–è¯‘ï¼›å¯ä»¥é€‰ç”¨android ndkæä¾›çš„æˆ–è€…å•ç‹¬å®‰è£…ç¼–è¯‘é“¾å·¥å…·é›†; è¿™é‡Œé‡‡ç”¨android ndk
 
 ```bash
  $ $ANDROID_SDK/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android29-clang hello_arm64.c -o hello_arm64
 ```
 
-Èç¹ûÓÐrootµÄandroidÊÖ»ú£¬¿ÉÒÔpushµ½ÊÖ»úÉÏÔËÐÐ£»»òÕß°²×°Ä£ÄâÆ÷£¬linuxÏµÍ³¿ÉÒÔ°²×°[qumu](https://qemu-project.gitlab.io/qemu/user/main.html)À´ÔËÐÐ
+å¦‚æžœæœ‰rootçš„androidæ‰‹æœºï¼Œå¯ä»¥pushåˆ°æ‰‹æœºä¸Šè¿è¡Œï¼›æˆ–è€…å®‰è£…æ¨¡æ‹Ÿå™¨ï¼Œlinuxç³»ç»Ÿå¯ä»¥å®‰è£…[qumu](https://qemu-project.gitlab.io/qemu/user/main.html)æ¥è¿è¡Œ
 
 ```bash
 qemu-aarch64  hello_arm64
 ```
 
-> »¹ÓÐÒ»ÖÖ·½·¨¾ÍÊÇÓÃdocker°²×°arm64-v8aµÄubuntu£¬ÕâÑù¾Í¿ÉÒÔÔÚ¶ÔÓ¦µÄcontainerÀï¹¹½¨ÔËÐÐÁË£¬±È½Ï·½±ã
+> è¿˜æœ‰ä¸€ç§æ–¹æ³•å°±æ˜¯ç”¨dockerå®‰è£…arm64-v8açš„ubuntuï¼Œè¿™æ ·å°±å¯ä»¥åœ¨å¯¹åº”çš„containeré‡Œæž„å»ºè¿è¡Œäº†ï¼Œæ¯”è¾ƒæ–¹ä¾¿
 
 
 
