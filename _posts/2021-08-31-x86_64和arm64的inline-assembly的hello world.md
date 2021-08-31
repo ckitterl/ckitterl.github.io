@@ -13,6 +13,30 @@ categories: assembly
 这个篇的基础上，我们可以自行扩展测试其他的汇编特性。比如汇编和C的互相调用, label的使用
 
 
+## 基础
+
+inline assmble的基础语法
+
+```
+asm asm-qualifiers ( AssemblerTemplate
+                 : OutputOperands
+                 [ : InputOperands
+                 [ : Clobbers ] ])
+
+asm asm-qualifiers ( AssemblerTemplate
+                      : OutputOperands
+                      : InputOperands
+                      : Clobbers
+                      : GotoLabels)
+```
+
+
+asm 关键字表示这是一个inline assembly
+
+这里不详述了，[官方文档](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#Volatile)写的还是很详细的
+
+
+
 ## x86_64
 
 ```c
