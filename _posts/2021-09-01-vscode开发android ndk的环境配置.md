@@ -4,6 +4,8 @@ title:  "用vscode+cmake开发android ndk开发环境"
 categories: assembly
 ---
 
+vscode 现在对于android ndk的开发支持已经蛮完善了。这里介绍一下如何在vscode使用cmake开发android ndk
+
 ## 插件安装
 
 - [c/c++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
@@ -64,7 +66,7 @@ abi:
 > 如果项目组都用vscode，建议将这个配置文件添加到版本管理中，方便项目组其他人员引入
 
 ## settings.json
-这个就是普通的vscode配置文件
+这个就是普通的vscode配置文件,这里配置的是跟项目相关的，包括输出的位置和是否在打开项目的时候是否立即进行构建
 ```json
 {
     "cmake.configureOnOpen": true,
@@ -73,8 +75,27 @@ abi:
 ```
 
 ## cmake-tool-kits.json
-`cmake-tool-kits.json`配置文件
-
+`cmake-tool-kits.json`配置文件是全局的。这个配置文件配置了构建用的工具链和通用设置。
+```json
+  {
+    "name": "Clang android",
+    "compilers": {
+      "C": "/Users/mk/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+      "CXX": "/Users/mk/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    },
+    "environmentVariables": {
+      "ANDROID_NDK": "/Users/mk/Library/Android/sdk/ndk/21.1.6352462"
+    },
+    "toolchainFile": "${env:ANDROID_NDK}/build/cmake/android.toolchain.cmake",
+    "cmakeSettings":{
+      "ANDROID_NATIVE_API_LEVEL": 23,
+      "ANDROID_TOOLCHAIN": "clang",
+      "ANDROID_NDK":"${env:ANDROID_NDK}",
+      "CMAKE_LIBRARY_OUTPUT_DIRECTORY":"output"
+    }
+  }
+```
+> 需要在这里设置compilers必须设置，默认的几个都是用的系统clang或者gcc，构建会失败。然后其余的设置都是通用的，所以也都设置在这里的。
 
 
 
