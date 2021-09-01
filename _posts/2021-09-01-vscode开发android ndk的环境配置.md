@@ -1,0 +1,81 @@
+---
+layout: post
+title:  "用vscode+cmake开发android ndk开发环境"
+categories: assembly
+---
+
+## 插件安装
+
+- [c/c++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+- [CMake](https://marketplace.visualstudio.com/items?itemName=twxs.cmake)
+- [CMake Tools][https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools]
+
+## 目标
+
+我们的目标是可以根据不同的`ABI`和`buildType`构建出不同的DSO(dynamic shared object, 即so文件)。
+> 在官方文档里，已经介绍了如何用命令行构建不同ABI和buildType的DSO，这里针对Cmake Tools将命令行中的参数填入配置项。
+
+## 配置文件
+
+为了能够让vscode能够调用cmake生成构建文件并调用ninja进行构建，我们需要两个配置文件
+
+- variants
+- cmake-tool-kits
+- settings
+
+### cmake-variants.yaml Or cmake-variants.json
+variants的相关配置可以放到`cmake-variants.yaml`或者`cmake-variants.json`，这两者只是格式不一样，效果和配置规则是一样的。这里我们采用`yaml`的文件格式。 这个文件可以放到`工程根目录`或者`.vscode/`目录里。
+
+下面是一个配置的例子
+```yaml
+buildType:
+  default: debug
+  description: My option
+  choices:
+    debug:
+      short: Debug
+      long: Build With debugging informationg
+      buildType: Debug
+
+    release:
+      short: Release
+      long: Optimize the resulting binaryies
+      buildType: Release
+
+abi:
+  default: armeabi-v7a
+  description: abi
+  choices:
+    armeabi-v7a:
+      short: armeabi-v7a
+      long: General for abi of armeabi-v7a
+      settings:
+        ANDROID_ABI: armeabi-v7a
+    arm64-v8a:
+      short: arm64-v8a
+      long: General for abi of arm64-v8a
+      settings:
+        ANDROID_ABI: arm64-v8a
+```
+
+这里定义了两个选择项`buildType`和`abi`(名字根据自己爱好变更)。buildType定义了构建类型（debug/release）相关的配置参数（这里只是加了一个buildType —— 这个buildType是choices选项里的buildType，是variants配置里定义好的一个属性，并能更改 —— 用于后续构建参数)，定义了abi类型
+（注意这里的settings, 我们添加了ANDROID_ABI这个字段，这里的设置将作为-D{SETTING_KEY}={SETTING_VALUE）传给CMake）
+
+> 如果项目组都用vscode，建议将这个配置文件添加到版本管理中，方便项目组其他人员引入
+
+## settings.json
+这个就是普通的vscode配置文件
+```json
+{
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build/${variant:buildType}/${variant:abi}"
+}
+```
+
+## cmake-tool-kits.json
+`cmake-tool-kits.json`配置文件
+
+
+
+
+
