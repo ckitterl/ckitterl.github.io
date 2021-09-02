@@ -10,7 +10,7 @@ vscode 现在对于android ndk的开发支持已经蛮完善了。这里介绍�
 
 - [c/c++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 - [CMake](https://marketplace.visualstudio.com/items?itemName=twxs.cmake)
-- [CMake Tools][https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools]
+- [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
 
 ## 目标
 
