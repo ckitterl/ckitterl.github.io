@@ -19,13 +19,13 @@ vscode 现在对于android ndk的开发支持已经蛮完善了。这里介绍�
 
 ## 配置文件
 
-为了能够让vscode能够调用cmake生成构建文件并调用ninja进行构建，我们需要两个配置文件
+为了能够让vscode能够调用cmake生成构建文件并调用ninja进行构建，我们需要三个配置文件
 
 - variants
 - cmake-tool-kits
 - settings
 
-### cmake-variants.yaml Or cmake-variants.json
+### variants
 variants的相关配置可以放到`cmake-variants.yaml`或者`cmake-variants.json`，这两者只是格式不一样，效果和配置规则是一样的。这里我们采用`yaml`的文件格式。 这个文件可以放到`工程根目录`或者`.vscode/`目录里。
 
 下面是一个配置的例子
@@ -65,16 +65,9 @@ abi:
 
 > 如果项目组都用vscode，建议将这个配置文件添加到版本管理中，方便项目组其他人员引入
 
-## settings.json
-这个就是普通的vscode配置文件,这里配置的是跟项目相关的，包括输出的位置和是否在打开项目的时候是否立即进行构建
-```json
-{
-    "cmake.configureOnOpen": true,
-    "cmake.buildDirectory": "${workspaceFolder}/build/${variant:buildType}/${variant:abi}"
-}
-```
-
-## cmake-tool-kits.json
+### cmake-tool-kits.json
+打开命令面板，输入`CMake: Edit User-Local CMake Kits`
+![](assets/image/cmake-setting-cmake-tool-kits.png)
 `cmake-tool-kits.json`配置文件是全局的。这个配置文件配置了构建用的工具链和通用设置。
 ```json
   {
@@ -97,6 +90,47 @@ abi:
 ```
 > 需要在这里设置compilers必须设置，默认的几个都是用的系统clang或者gcc，构建会失败。然后其余的设置都是通用的，所以也都设置在这里的。
 
+
+### settings.json
+打开命令面板，输入`settings`，选择`Perferences: Open User Settings`
+![](assets/image/cmake-settings.png)
+
+这个就是普通的vscode配置文件,这里配置的是跟项目相关的，包括`cmake构建结果输出的位置`和`是否在打开项目的时候是否立即进行构建`
+
+
+```json
+{
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build/${variant:buildType}/${variant:abi}"
+}
+```
+
+### Additional
+如果发现android相关的头文件引用和相关符号无法识别，可以在.vscode文件夹中增加`c_cpp_properties.json`的配置文件，并增加以下配置。
+加完配置后就可以在右下角的配置里选择name对应的配置项（我们这里是Android）
+
+这个配置文件是给`C/C++`插件用的，所以需要安装`C/C++`插件才会起作用
+
+```json
+{
+    "configurations": [
+        {
+            "name": "Android",
+            "includePath": [
+                 "${workspaceFolder}",
+                 "/Users/mk/Library/Android/sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/aarch64-linux-android/**"
+            ],
+            "defines": [],
+            "compilerPath": "${env:ANDROID_NDK}/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
+```
 
 
 
