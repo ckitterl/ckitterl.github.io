@@ -67,7 +67,7 @@ abi:
 
 ### cmake-tool-kits.json
 打开命令面板，输入`CMake: Edit User-Local CMake Kits`
-![](assets/image/cmake-setting-cmake-tool-kits.png)
+![](/assets/image/cmake-setting-cmake-tool-kits.png)
 `cmake-tool-kits.json`配置文件是全局的。这个配置文件配置了构建用的工具链和通用设置。
 ```json
   {
@@ -93,7 +93,7 @@ abi:
 
 ### settings.json
 打开命令面板，输入`settings`，选择`Perferences: Open User Settings`
-![](assets/image/cmake-settings.png)
+![](/assets/image/cmake-settings.png)
 
 这个就是普通的vscode配置文件,这里配置的是跟项目相关的，包括`cmake构建结果输出的位置`和`是否在打开项目的时候是否立即进行构建`
 
