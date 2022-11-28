@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "gradle plugin入门"
-categories: gradle-plugin gradle
+categories: gradle
 ---
 
 gradle的核心部分仅仅提供了基本的功能和通用的机制，比如`task`, `plugin`, `project`的概念实现，`groovy`/`kotlin`语言的实现接口。我们所熟知的功能其实大部分都是由plugin提供的。比如[JavaCompile](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.compile.JavaCompile.html)提供了java代码的构建，提供了java代码构建过程中的参数配置的代码块，源文件的目录结构的配置和默认约定等。具体的说，gradle plugin可以为我们提供以下的几个功能

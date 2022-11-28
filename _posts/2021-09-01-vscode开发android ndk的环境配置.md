@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "用vscode+cmake开发android ndk开发环境"
-categories: assembly
+categories: cmake android vscode
 ---
 
 vscode 现在对于android ndk的开发支持已经蛮完善了。这里介绍一下如何在vscode使用cmake开发android ndk
